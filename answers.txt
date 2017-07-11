@@ -1,0 +1,53 @@
+1. SELECT title FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Kara Melton');
+
+How Tech Business Models Come From Marginalized Communities, But Startups Are Still Mostly White
+ Confronting the Assumption of Whiteness in Virtual Spaces
+(2 rows)
+
+2. SELECT * FROM cities WHERE province_id = (SELECT id FROM provinces WHERE name = 'Ontario');
+
+ id |  name   | year_founded | province_id
+----+---------+--------------+-------------
+  8 | Toronto |         1793 |          14
+ 11 | Ottawa  |         1826 |          14
+(2 rows)
+
+3. SELECT name FROM authors WHERE id = (SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor');
+name
+-------------------
+Tilde Ann Thurium
+(1 row)
+
+4. one_to_many_assignment=# SELECT count(*) FROM provinces;
+count
+-------
+   14
+(1 row)
+
+5. one_to_many_assignment=# select count(*) from persons where residence_id = (select id from residences where address = '4740 McDermott Street');
+ count
+-------
+     2
+(1 row)
+
+6. one_to_many_assignment=# select name from cities where id = (select city_id from residences where address = '4740 McDermott Street');
+  name
+--------
+ Ottawa
+(1 row)
+
+7. one_to_many_assignment=# select name from provinces where id = (select province_id from cities where id = (select city_id from residences where address = '4740 McDermott Street'));
+  name
+---------
+ Ontario
+(1 row)
+
+8. one_to_many_assignment=# select name from countries where id = (select country_id from provinces where id = (select province_id from cities where id = (select city_id from residences where address = '4740 McDermott Street')));
+  name
+--------
+ Canada
+(1 row)
+
+9. one_to_many_assignment=# select name from countries where id = (select name from countries where id = (select country_id from provinces where id = (select province_id from cities where id = (select city_id from residences where id = (SELECT residence_id from persons where name = 'Destini Davis' )))));
+
+10. 
